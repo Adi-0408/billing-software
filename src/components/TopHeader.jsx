@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Plus } from 'lucide-react';
+import { Menu, Plus, ScanBarcode } from 'lucide-react';
 import { APP_MODULES } from './Sidebar';
 import { useJewellery } from '../context/JewelleryContext';
 
@@ -38,7 +38,17 @@ export default function TopHeader({
       </div>
 
       {/* Right: Live Rates & Quick New Bill */}
-      <div className="flex items-center gap-3 font-mono text-xs">
+      <div className="flex items-center gap-2 sm:gap-3 font-mono text-xs">
+        {/* Mobile Quick Barcode Scan */}
+        <button
+          onClick={() => onSelectView('barcode')}
+          className="sm:hidden flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/40 text-xs font-mono font-bold cursor-pointer shadow-sm active:scale-95 transition-transform"
+          title="Scan Barcode"
+        >
+          <ScanBarcode className="w-3.5 h-3.5" />
+          <span>Scan</span>
+        </button>
+
         {/* Live Gold Rate */}
         <div 
           onClick={() => onSelectView('settings')}
@@ -63,7 +73,7 @@ export default function TopHeader({
         {/* Quick New Bill Action */}
         <button
           onClick={() => onSelectView('billing')}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl gold-gradient-btn text-xs font-bold cursor-pointer shadow-gold-glow"
+          className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 rounded-xl gold-gradient-btn text-xs font-bold cursor-pointer shadow-gold-glow active:scale-95 transition-transform"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>New Bill</span>

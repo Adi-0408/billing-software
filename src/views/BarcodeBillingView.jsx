@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useJewellery } from '../context/JewelleryContext';
 import { 
   Camera, ScanBarcode, Printer, Search, CheckCircle2, 
-  Sparkles, Tag, ArrowRight, Zap, Layers 
+  Sparkles, Tag, ArrowRight, Zap, Layers, Smartphone 
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import PrintModal from '../components/print/PrintModal';
@@ -111,6 +111,27 @@ export default function BarcodeBillingView() {
             <span>Print All Tags ({inventory.length})</span>
           </button>
         </div>
+      </div>
+
+      {/* Mobile-Friendly Quick Scan Card */}
+      <div className="lg:hidden p-4 rounded-2xl bg-gradient-to-r from-sky-500/20 via-blue-500/15 to-transparent border border-sky-500/40 flex items-center justify-between gap-3 shadow-lg">
+        <div className="space-y-0.5">
+          <div className="text-xs font-bold text-white flex items-center gap-1.5">
+            <Smartphone className="w-4 h-4 text-sky-400" />
+            <span>Mobile Camera Ready</span>
+          </div>
+          <p className="text-[10px] text-slate-300 font-mono">
+            Tap to open your phone's back camera & scan barcode tag
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={() => setShowCameraScanner(true)}
+          className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-400 to-blue-500 text-obsidian-950 font-black text-xs flex items-center gap-1.5 cursor-pointer shadow-lg shadow-sky-500/20 active:scale-95 transition-transform whitespace-nowrap"
+        >
+          <Camera className="w-4 h-4 text-obsidian-950" />
+          <span>Tap to Scan</span>
+        </button>
       </div>
 
       {/* Grid: Barcode Scanner & Item Details */}
